@@ -97,7 +97,8 @@ void MessageRDTip::setMode(AnimationMode newMode)
 
 void MessageRDTip::initAnimation()
 {
-    showOpacity = new QPropertyAnimation(ui->tipArea, "windowOpacity");
+    // 渐变效果必须指定主面板作为动画属性
+    showOpacity = new QPropertyAnimation(this, "windowOpacity");
     if (static_cast<int>(mode) & static_cast<int>(AnimationMode::OpacityAnimation)) {
         showOpacity->setDuration(1500);
         showOpacity->setStartValue(0);
